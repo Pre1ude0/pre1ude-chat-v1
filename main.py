@@ -30,7 +30,6 @@ def message():
 @app.route('/api/get/msg', methods=['GET'])
 def get_msg():
     messages = get_messages()
-    print(messages)
     return messages, 200
 
 # WebSocket event to notify when a new message arrives

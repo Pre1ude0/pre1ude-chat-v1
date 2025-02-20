@@ -7,8 +7,8 @@ body {
     height: 80%;
     border: 1px solid #ffffff;
     width: 800px;
-    overflow-y: hidden;
-    overflow-x: hidden;
+	overflow-x: hidden;
+    overflow-y:	scroll;
 
     display: flex;
     flex-direction: column;
@@ -61,6 +61,12 @@ body {
     }
 }
 
+@media screen and (max-width: 800px) {
+	#chat {
+		width: 100%;
+	}
+}
+
 .inputs {
     margin-top: 2px;
     width: 802px;
@@ -102,6 +108,20 @@ body {
 			color: #000000;
 		}
     }
+}
+
+@media screen and (max-width: 800px) {
+	.inputs {
+		width: 100%;
+
+		#message {
+			width: calc(100% - 50px);
+		}
+
+		#send {
+			width: 50px;
+		}
+	}
 }
 
 #username {	
