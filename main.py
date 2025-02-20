@@ -21,7 +21,14 @@ def message():
         return 'Message too long', 400
     elif len(author) > 255:
         return 'Username too long', 400
+    if message.strip() == "":
+        return 'Message content cannot be empty', 400
+    elif author.strip() == "":
+        return 'Username content cannot be empty', 400
     else:
+        
+        message = message.replace("'", "’")
+        author = author.replace("'", "’")
         add_message(author, message)
 
         socketio.emit("new_message", {"author": author, "message": message}, room=None, include_self=True)
@@ -45,6 +52,6 @@ def application(environ, start_response):
     return app(environ, start_response)
 
 if __name__ == '__main__':
-    socketio.run(app, port=3000, host="0.0.0.0")
+    socketio.run(app, port=3000, host="0.0.0.0", allow_unsafe_werkzeug=True)
 
 
